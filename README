@@ -1,0 +1,49 @@
+-*- outline -*-
+
+* Dependencies
+The XPath-plugin depends on following libraries and programs:
+
+** dlvhex
+Naturally, dlvhex must already be installed on the system.
+
+** XERCES for C++
+http://xml.apache.org/xerces-c/
+
+** XALAN for C++
+http://xml.apache.org/xalan-c/
+
+* Building and installing dlvhex-...plugin
+
+** Prerequisites
+
+*** dlvhex
+For instructions how to install dlvhex, see the respective README there.
+
+*** XERCES and XALAN
+Download the XERCES and XALAN sources and follow the installation instructions.
+Make sure that both are installed in the /opt or /usr directory.
+On Debian based systems you can use the apt-get command "apt-get install libxerces27 xalan" to download and install the files.
+Also Darwin Ports for MAC OS X provides installers for XERCES and XALAN. Simply use the commands "port install xercesc" and "port install xalanc".
+
+** Configuration
+Run "configure" to create the necessary Makefiles. If you want to install the
+plugin locally in your home, use the configure-switch --enable-userinstall
+(then, the plugin will be installed in ~/.dlvhex/plugins, where dlvhex will
+find it). Otherwise, the default installation is automatically determined from
+the configuration of dlvhex (usually /usr/local/lib/dlvhex/plugins or similar).
+
+** Installation
+Run "make install" to install the plugin. It will be placed at a location
+determined by configure.
+
+* Using the XPath-plugin
+The XPath-plugin provides a single atom, &xpath, to read atomic values from
+a given XML file using XPath queries:
+
+	&xpath[uri,xpath_query](X).
+	
+The input constant "uri" denotes the location of the XML file. It could either
+be the path to a local file or to a web address.
+The input constant xpath_query can be every XPath query that returns atomic values
+(values and attribute values).
+Please note: The XPath-plugin does not handle results that contain non-atomic values.

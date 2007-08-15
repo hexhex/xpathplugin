@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+
+<persons>
+	<scientist name="Albert Einstein" gender="male">
+		<field>Physics</field>
+		<country>Germany</country>
+		<country>USA</country>
+		<keywords>
+			<keyword>theory of relativity</keyword>
+			<keyword>special thory of relativity</keyword>
+			<keyword>quantum theory</keyword>
+			<keyword>Nobel Price</keyword>
+		</keywords>
+	</scientist>
+	
+	<scientist name="Heinz Zemanek" gender="male">
+		<field>Informatics</field>
+		<field>Telecommunication</field>
+		<country>Austria</country>
+		<keywords>
+			<keyword>Mailuefterl</keyword>
+			<keyword>IBM</keyword>
+			<keyword>URRI</keyword>
+			<keyword>Vienna Definition Language</keyword>
+		</keywords>
+	</scientist>
+	
+	<scientist name="Charlotte Buehler" gender="female">
+		<field>Psychology</field>
+		<country>Germany</country>
+		<keywords>
+			<keyword>Humanistic Psychology</keyword>
+			<keyword>Das seelenleben des Jugendlichen</keyword>
+		</keywords>
+	</scientist>
+	
+	<scientist name="Steve Wozniak" gender="male">
+		<field>Electronics</field>
+		<field>Informatics</field>
+		<country>USA</country>
+		<keywords>
+			<keyword>Apple</keyword>
+			<keyword>First Personal Computer</keyword>
+			<keyword>Macintosh</keyword>
+			<keyword>iWoz</keyword>
+		</keywords>
+	</scientist>
+	
+	<scientist name="Marie Curie" gender="female">
+		<field>Physics</field>
+		<field>Chemics</field>
+		<country>Poland</country>
+		<keywords>
+			<keyword>Radium</keyword>
+			<keyword>Polonium</keyword>
+			<keyword>Radioactivity</keyword>
+			<keyword>Nobel Price</keyword>
+		</keywords>
+	</scientist>
+</persons>
