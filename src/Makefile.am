@@ -1,5 +1,3 @@
-AUTOMAKE_OPTIONS = foreign
-
 #
 # replace 'plugin' on the right side by your plugin's name
 #
@@ -20,7 +18,7 @@ AM_CPPFLAGS = \
 	$(DLVHEX_CFLAGS) \
 	-l/opt/local/include/xercesc \
    -l/opt/local/include/xalanc 
-	
+
 
 #
 # replace 'plugin' on the left side as above and
