@@ -1,0 +1,7 @@
+2010-04-23  Thomas Krennwallner  <tkren@kr.tuwien.ac.at>
+
+	* src/Makefile.am (AUTOMAKE_OPTIONS): Remove.
+	* testsuite/Makefile.am: Likewise.
+
+	* Makefile.am (AUTOMAKE_OPTIONS): Use gnu option.
+
