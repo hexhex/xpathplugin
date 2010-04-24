@@ -1,7 +1,7 @@
 /* -*- C++ -*- */
 /** 
  * @mainpage XPath Plugin Documentation
- * The XPath plugin is developed for <A HREF="http://con.fusion.at/dlvhex/">dlvhex</A>. It allows dlvhex programs
+ * The XPath plugin is developed for <A HREF="http://www.kr.tuwien.ac.at/research/systems/dlvhex/">dlvhex</A>. It allows dlvhex programs
  * to read atomic values from XML files using <A HREF="http://www.w3.org/TR/xpath">XPath</A> queries.
  * 
  * @section using_xpath Using the XPath atom
