@@ -6,24 +6,15 @@ The XPath-plugin depends on following libraries and programs:
 ** dlvhex
 Naturally, dlvhex must already be installed on the system.
 
-** XERCES for C++
-http://xml.apache.org/xerces-c/
+** libxml2
+http://xmlsoft.org/
 
-** XALAN for C++
-http://xml.apache.org/xalan-c/
-
-* Building and installing dlvhex-...plugin
+* Building and installing dlvhex-xpathplugin
 
 ** Prerequisites
 
 *** dlvhex
 For instructions how to install dlvhex, see the respective README there.
-
-*** XERCES and XALAN
-Download the XERCES and XALAN sources and follow the installation instructions.
-Make sure that both are installed in the /opt or /usr directory.
-On Debian based systems you can use the apt-get command "apt-get install libxerces27 xalan" to download and install the files.
-Also Darwin Ports for MAC OS X provides installers for XERCES and XALAN. Simply use the commands "port install xercesc" and "port install xalanc".
 
 ** Configuration
 Run "configure" to create the necessary Makefiles. If you want to install the
