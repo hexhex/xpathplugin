@@ -24,19 +24,14 @@
 #include "xalanc/XalanTransformer/XercesDOMWrapperParsedSource.hpp"
 #include "xalanc/DOMSupport/XalanDocumentPrefixResolver.hpp"
 
-#include "myerrorhandler.hpp"
+#include "dlvhex/PluginInterface.h"
 
-/*********************************************************************/
-/*********************************************************************/
+#include "myerrorhandler.hpp"
 
 using namespace xalanc;
 using namespace std;
 
 XERCES_CPP_NAMESPACE_USE 
-
-/*********************************************************************/
-/*********************************************************************/
-/*********************************************************************/
 
 static const XMLCh ls_id[] = {chLatin_L, chLatin_S, chNull};
 

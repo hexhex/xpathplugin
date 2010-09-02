@@ -120,3 +120,5 @@ XPathAtom::parseXMLFile(const XMLCh* uri, const XMLCh* query, std::vector<Tuple>
 	}
 }
 
+}}
+

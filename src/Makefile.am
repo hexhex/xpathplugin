@@ -8,7 +8,8 @@ plugin_LTLIBRARIES = libdlvhexxpath.la
 # add all sources of your plugin
 #
 libdlvhexxpath_la_SOURCES =	xpathplugin.cpp \
-										myerrorhandler.cpp
+				myerrorhandler.cpp \
+				xpathatom.cpp
 
 #
 # extend compiler flags by CFLAGS of other needed libraries
