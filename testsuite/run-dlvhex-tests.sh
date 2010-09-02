@@ -23,12 +23,15 @@
 
 MKTEMP="mktemp -t tmp.XXXXXXXXXX"
 TMPFILE=$($MKTEMP) # global temp. file for answer sets
+CUTFILE="cut.tmp"
+TESTDIR="."
+DLVHEX="dlvhex"
 
 failed=0
 warned=0
 ntests=0
 
-cp $TESTDIR/scientists.xml .
+#cp $TESTDIR/scientists.xml .
 
 echo ============ dlvhex tests start ============
 
@@ -49,8 +52,10 @@ do
 
 	# run dlvhex with specified parameters and program
 	$DLVHEX  $PARAMETERS $ADDPARM $HEXPROGRAM | egrep -v "^$" > $TMPFILE
+	# delete the first line in the file	
+	sed '1d' $TMPFILE > $CUTFILE
 
-	if cmp -s $TMPFILE $ANSWERSETS
+	if cmp -s $CUTFILE $ANSWERSETS
 	then
 	    echo PASS: $HEXPROGRAM
 	else
