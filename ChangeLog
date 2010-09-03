@@ -1,3 +1,11 @@
+2010-09-02  Juergen Weinberger  <gamsta@gmx.net>
+
+	* Seperated the classes into cpp and header files
+	* Headers now in the include folder
+	* updated the Makefile.am
+	* rewrote the test shell script to work again
+	* updated the plugin to work with the interface again
+
 2010-07-01  Thomas Krennwallner  <tkren@kr.tuwien.ac.at>
 
 	* m4/boost.m4: Updating to version currently used in dlvhex trunk.

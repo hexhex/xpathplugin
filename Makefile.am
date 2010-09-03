@@ -5,7 +5,8 @@ include doxygen.am
 
 SUBDIRS = \
           src/ \
-          testsuite/
+          testsuite/ \
+	  include/
 
 EXTRA_DIST = \
 			 doxygen.am \
