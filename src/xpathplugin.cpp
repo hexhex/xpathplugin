@@ -8,6 +8,8 @@
  */
 #include "xpathplugin.hpp"
 
+#include <iostream>
+
 namespace dlvhex {
   namespace xpath {
 

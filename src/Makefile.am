@@ -16,7 +16,7 @@ libdlvhexxpath_la_SOURCES =	xpathplugin.cpp \
 AM_CPPFLAGS = \
 	-I$(top_srcdir)/include \
 	$(DLVHEX_CFLAGS) \
-	$(LIBXML2_CFLAGS) \
+	$(LIBXML2_CFLAGS)
 
 #
 # replace 'plugin' on the left side as above and
