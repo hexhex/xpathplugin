@@ -8,7 +8,6 @@ plugin_LTLIBRARIES = libdlvhexxpath.la
 # add all sources of your plugin
 #
 libdlvhexxpath_la_SOURCES =	xpathplugin.cpp \
-				myerrorhandler.cpp \
 				xpathatom.cpp
 
 #
@@ -18,17 +17,13 @@ AM_CPPFLAGS = \
 	-I$(top_srcdir)/include \
 	$(DLVHEX_CFLAGS) \
 	$(LIBXML2_CFLAGS) \
-	-l/opt/local/include/xercesc \
-   -l/opt/local/include/xalanc 
-
 
 #
 # replace 'plugin' on the left side as above and
 # add other needed libs to linker flags if necessary
 #
+
 libdlvhexxpath_la_LDFLAGS = -avoid-version -module \
-	$(LIBXML2_LIBS) \
-										-lxerces-c \
-										-lxalan-c \
-										-lxalanMsg
+			$(LIBXML2_LIBS) 
+
 
