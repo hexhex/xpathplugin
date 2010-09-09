@@ -2,11 +2,16 @@
 
 	* src/Makefile.am: Add LIBXML2_CFLAGS and LIBXML2_LIBS.
 
-2010-09-02  Juergen Weinberger  <gamsta@gmx.net>
+2010-09-09  Juergen Weinberger  <gamsta@gmx.net>
 	* MyErrorhandler.cpp/.hpp: Removed no longer needed
-	* Makefile.am: Xerces and Xalan dependencies removed and xmllib added
 	* include/xpathatom.hpp: Removed xerces and xalan; added xmllib; refactored
 	* src/xpathatom.cpp: Removed xerces and xalan; added xmllib; refactored
+	* examples/: Moved the tests and the xml file to the example directory
+	* examples/tests: Moved the testscript and the answer files to the tests directory
+	* examples/Makefile.am: added makefile.am
+	* testsuit/: Removed
+	* Makefile.am: Xerces and Xalan dependencies removed and xmllib added; updated
+	* configure.ac: updated
 
 2010-09-02  Juergen Weinberger  <gamsta@gmx.net>
 	* include/: Seperated the classes into cpp and header files
