@@ -3,12 +3,19 @@
 	* src/Makefile.am: Add LIBXML2_CFLAGS and LIBXML2_LIBS.
 
 2010-09-02  Juergen Weinberger  <gamsta@gmx.net>
+	* MyErrorhandler.cpp/.hpp: Removed no longer needed
+	* Makefile.am: Xerces and Xalan dependencies removed and xmllib added
+	* include/xpathatom.hpp: Removed xerces and xalan; added xmllib; refactored
+	* src/xpathatom.cpp: Removed xerces and xalan; added xmllib; refactored
 
-	* Seperated the classes into cpp and header files
-	* Headers now in the include folder
-	* updated the Makefile.am
-	* rewrote the test shell script to work again
-	* updated the plugin to work with the interface again
+2010-09-02  Juergen Weinberger  <gamsta@gmx.net>
+	* include/: Seperated the classes into cpp and header files
+	* include/Makefile.am: Added
+	* include/xpathatom.hpp: Seperated the xpathatom in it's own file
+	* src/xpathatom.cpp: Seperated the xpathatom in it's own file
+	* src/xpathplugin.cpp: Refactored to work with the plugin interface again (boost::shared_ptr added)
+	* Makefile.am: Updated to use the include dir
+	* testsuit/run-dlvhex-test.sh: modified to work again
 
 2010-07-01  Thomas Krennwallner  <tkren@kr.tuwien.ac.at>
 
