@@ -38,14 +38,6 @@ AC_PROG_LIBTOOL
 # check for other libraries here
 #
 
-#check for XERCES
-#AC_CHECK_HEADERS([xercesc/util/XercesVersion.hpp],,AC_MSG_ERROR([can't find Xerces for C++ header files]))
-#AC_CHECK_LIB([xerces-c],[main],,AC_MSG_ERROR([can't find Xerces for C++ library]))
-
-#check for XALAN
-#AC_CHECK_HEADERS([xalanc/Include/XalanVersion.hpp],,AC_MSG_ERROR([can't find Xalan for C++ header files]))
-#AC_CHECK_LIB([xalan-c],[main],,AC_MSG_ERROR([can't find Xalan for C++ library]))
-
 #
 # of course we need dlvhex itself!
 #
