@@ -59,6 +59,25 @@ XPathPlugin::setOptions(bool doHelp, std::vector<std::string>& argv, std::ostrea
 	}
 }
 
+
+// Plugin-Instance
+XPathPlugin theXPathPlugin;
+
+// loads the Plugin to dlvhex:
+extern "C" XPathPlugin* PLUGINIMPORTFUNCTION()
+{
+    //
+    // set version - is shown when plugin is loaded
+    // remember to change the macro names to the ones you used in configure.ac!
+    //
+
+    theXPathPlugin.setVersion(XPATH_MAJOR,
+                              XPATH_MINOR,
+                              XPATH_MICRO);
+
+    return &theXPathPlugin;
 }
-}
+
+  } // namespace xpath
+} // namespace dlvhex
 
