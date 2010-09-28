@@ -1,29 +1,20 @@
-#
-# replace 'plugin' on the right side by your plugin's name
-#
-plugin_LTLIBRARIES = libdlvhexxpath.la
-
-#
-# replace 'plugin' on the left side as above and
-# add all sources of your plugin
-#
-libdlvhexxpath_la_SOURCES =	xpathplugin.cpp \
-				xpathatom.cpp
-
-#
-# extend compiler flags by CFLAGS of other needed libraries
-#
+# global preprocessor flags
 AM_CPPFLAGS = \
-	-I$(top_srcdir)/include \
-	$(DLVHEX_CFLAGS) \
-	$(LIBXML2_CFLAGS)
+    -I$(top_srcdir)/include \
+    $(BOOST_CPPFLAGS) \
+    $(LIBXML2_CFLAGS)
 
-#
-# replace 'plugin' on the left side as above and
-# add other needed libs to linker flags if necessary
-#
+# global linker flags
+AM_LDFLAGS = $(BOOST_UNIT_TEST_FRAMEWORK_LDFLAGS)
 
-libdlvhexxpath_la_LDFLAGS = -avoid-version -module \
-			$(LIBXML2_LIBS) 
+# global libs
+LIBS = $(BOOST_UNIT_TEST_FRAMEWORK_LIBS) $(LIBXML2_LIBS) $(DLVHEX_LIBS)
 
+TESTS = xpath-unittest
 
+TESTS_ENVIRONMENT = EXAMPLESDIR=$(top_srcdir)/examples BOOST_TEST_LOG_LEVEL=all BOOST_TEST_SHOW_PROGRESS=yes
+
+check_PROGRAMS = xpath-unittest
+
+xpath_unittest_SOURCES = xpath-unittest.cpp
+xpath_unittest_LDADD = $(top_builddir)/src/libdlvhexxpath-test.la

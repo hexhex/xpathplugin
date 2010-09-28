@@ -7,9 +7,9 @@ EXTRA_DIST = \
     tests/keywords.out \
     tests/nobelprice.out \
     tests/scientists.out \
-	tests/run-dlvhex-tests.sh
+    tests/run-dlvhex-tests.sh
 
-TESTS = tests/run-dlvhex-tests.sh
-TESTS_ENVIRONMENT = DLVHEX=dlvhex TESTDIR=$(top_srcdir)/examples/tests PARAMETERS="-s --plugindir=$(top_builddir)/src/.libs"
+#TESTS = tests/run-dlvhex-tests.sh
+#TESTS_ENVIRONMENT = DLVHEX=dlvhex TESTDIR=$(top_srcdir)/examples/tests PARAMETERS="-s --plugindir=$(top_builddir)/src/.libs"
 
 DISTCLEANFILES = $(top_builddir)/examples/scientists.xml
