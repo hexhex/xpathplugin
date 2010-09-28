@@ -47,10 +47,10 @@ PKG_CHECK_MODULES([DLVHEX], [dlvhex >= 1.7])
 PKG_CHECK_MODULES([LIBXML2], [libxml-2.0 >= 0.25])
 
 # cppunit is optional -> give warning in ACTION-IF-NOT-FOUND
-PKG_CHECK_MODULES([CPPUNIT], [cppunit >= 1.12.0], [have_cppunit=true], [have_cppunit=false])
-if test x$have_cppunit = xfalse; then
-   AC_MSG_WARN([could not find cppunit >= 1.12.0, `make check' will fail. Please download it from http://cppunit.sourceforge.net/ and setup PKG_CONFIG_PATH appropriately.])
-fi
+#PKG_CHECK_MODULES([CPPUNIT], [cppunit >= 1.12.0], [have_cppunit=true], [have_cppunit=false])
+#if test x$have_cppunit = xfalse; then
+#   AC_MSG_WARN([could not find cppunit >= 1.12.0, `make check' will fail. Please download it from http://cppunit.sourceforge.net/ and setup PKG_CONFIG_PATH appropriately.])
+#fi
 
 
 # checking for boost libs
@@ -59,6 +59,7 @@ BOOST_REQUIRE([1.41.0])
 BOOST_SMART_PTR
 BOOST_STRING_ALGO
 BOOST_TOKENIZER
+BOOST_TEST
 
 #
 # where the plugin will be installed by default.
