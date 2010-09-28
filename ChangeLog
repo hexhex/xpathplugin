@@ -1,3 +1,21 @@
+2010-09-28  Thomas Krennwallner  <tkren@kr.tuwien.ac.at>
+
+	* testsuite/Makefile.am: Setup Boost.Test environment.
+	* testsuite/xpath-unittest.cpp: Likewise.
+	* examples/Makefile.am: Likewise.
+
+	* src/xpathplugin.cpp: Move PLUGINIMPORTFUNCTION here.
+
+	* include/xpathatom.hpp: Add include guards.
+	* include/xpathplugin.hpp: Likewise.
+
+	* configure.ac: Check for Boost.Test library.
+
+	* Makefile.am (SUBDIRS): Add testsuite.
+
+	* src/Makefile.am (AM_CPPFLAGS): Add BOOST_CPPFLAGS.
+	(noinst_LTLIBRARIES): Build a non-module libdlvhexxpath-test.la library.
+
 2010-09-09  Thomas Krennwallner  <tkren@kr.tuwien.ac.at>
 
 	* src/Makefile.am: Add LIBXML2_CFLAGS and LIBXML2_LIBS.
