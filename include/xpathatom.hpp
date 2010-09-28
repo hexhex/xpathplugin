@@ -5,6 +5,9 @@
  * @date 2.9.2010  
  */
 
+#ifndef XPATH_ATOM_HPP_
+#define XPATH_ATOM_HPP_
+
 #include "dlvhex/PluginInterface.h"
 
 #include <libxml/tree.h>
@@ -77,4 +80,11 @@ private:
 					std::vector<Tuple> &out);
 };
 
-}}
+  } // namespace xpath
+} // namespace dlvhex
+
+#endif // XPATH_ATOM_HPP_
+
+// Local Variables:
+// mode: C++
+// End:
