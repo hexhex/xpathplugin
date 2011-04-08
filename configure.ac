@@ -13,7 +13,7 @@ AC_DEFINE_UNQUOTED([XPATH_MINOR], [$MINOR], [Minor version number of the XPath-p
 AC_DEFINE_UNQUOTED([XPATH_MICRO], [$MICRO], [Micro version number of the XPath-plugin])
 
 
-AM_INIT_AUTOMAKE
+AM_INIT_AUTOMAKE([color-tests])
 
 # Checks for programs.
 AC_PROG_CC
