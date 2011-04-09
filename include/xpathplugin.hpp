@@ -56,8 +56,8 @@ class XPathPlugin : public PluginInterface {
 public:
 	virtual void getAtoms(AtomFunctionMap& a);
    
-    	// process options that were given to dlvhex
-    	void setOptions(bool doHelp, std::vector<std::string>& argv, std::ostream& out);
+    // process options that were given to dlvhex
+    void setOptions(bool doHelp, std::vector<std::string>& argv, std::ostream& out);
 };
 
   } // namespace xpath

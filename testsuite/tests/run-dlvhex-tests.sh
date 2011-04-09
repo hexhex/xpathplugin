@@ -31,13 +31,16 @@ ntests=0
 
 echo ============ dlvhex tests start ============
 
+# change into the example directory
+cd $EXAMPLESDIR
+
 for t in $(find $TESTDIR -name '*.test' -type f)
 do
     while read HEXPROGRAM ANSWERSETS ADDPARM
     do
 	let ntests++
 
-	HEXPROGRAM=$EXAMPLESDIR/$HEXPROGRAM
+	HEXPROGRAM=$HEXPROGRAM
     ANSWERSETS=$TESTDIR/$ANSWERSETS
 
 	if [ ! -f $HEXPROGRAM ] || [ ! -f $ANSWERSETS ]; then
@@ -45,7 +48,7 @@ do
 	    test ! -f $ANSWERSETS && echo WARN: Could not find answer sets file $ANSWERSETS
 	    continue
 	fi
-
+     
 	# run dlvhex with specified parameters and program
 	$DLVHEX  $PARAMETERS $ADDPARM $HEXPROGRAM | egrep -v "^$" > $TMPFILE
 

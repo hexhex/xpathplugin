@@ -96,11 +96,10 @@ CPPFLAGS="$CPPFLAGS -DPLUGIN_DIR='\"\$(dlvhexlibdir)\"'"
 # all needed makefiles
 #
 AC_CONFIG_FILES([
-           Makefile 
-           examples/Makefile
-	   testsuite/Makefile
-	   include/Makefile
-           src/Makefile
+        Makefile 
+        testsuite/Makefile
+        include/Makefile
+        src/Makefile
 ])
 
 AC_OUTPUT

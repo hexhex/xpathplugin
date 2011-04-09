@@ -6,11 +6,14 @@ include doxygen.am
 SUBDIRS = \
 	src \
 	testsuite \
-        examples \
-	include
+	include 
 
 EXTRA_DIST = \
 	doxygen.am \
-	doxygen.cfg
+	doxygen.cfg \
+    examples/keywords.hex \
+    examples/nobelprice.hex \
+    examples/scientists.hex \
+    examples/scientists.xml
 
 MOSTLYCLEANFILES = $(DX_CLEANFILES)

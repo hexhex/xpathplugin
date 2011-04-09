@@ -15,13 +15,15 @@ AM_CPPFLAGS = \
 AM_LDFLAGS = $(BOOST_UNIT_TEST_FRAMEWORK_LDFLAGS)
 
 #TESTS = tests/run-dlvhex-tests.sh
-#TESTS_ENVIRONMENT = DLVHEX=dlvhex TESTDIR=$(top_srcdir)/testsuite/tests PARAMETERS="-s --plugindir=$(top_builddir)/src/.libs"
+#TESTS_ENVIRONMENT = DLVHEX=dlvhex TESTDIR=$(top_srcdir)/testsuite/tests PARAMETERS="-s --plugindir=$(top_builddir)/src/.libs <-- !!! NOT WORKING, WHY !!!"
 
 # global libs
 LIBS = $(BOOST_UNIT_TEST_FRAMEWORK_LIBS) $(LIBXML2_LIBS) $(DLVHEX_LIBS)
 
-TESTS = xpath-unittest  
-TESTS_ENVIRONMENT = EXAMPLESDIR=$(top_builddir)/examples BOOST_TEST_LOG_LEVEL=all BOOST_TEST_SHOW_PROGRESS=yes DLVHEX=dlvhex
+TESTS = xpath-unittest \
+        tests/run-dlvhex-tests.sh
+        
+TESTS_ENVIRONMENT = EXAMPLESDIR=$(top_builddir)/examples BOOST_TEST_LOG_LEVEL=all BOOST_TEST_SHOW_PROGRESS=yes DLVHEX=dlvhex TESTDIR=$(top_srcdir)/testsuite/tests PARAMETERS="-s"
 
 check_PROGRAMS = xpath-unittest
 

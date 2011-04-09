@@ -1,3 +1,8 @@
+2011-04-09  Juergen Weinberger  <gamsta@gmx.net>
+	* examples/tests moved to testsuite/tests
+	* run-dlvhex-tests.sh updated for new test dir
+	* testsuite/Makefile.am updated for new test dir
+
 2010-09-28  Thomas Krennwallner  <tkren@kr.tuwien.ac.at>
 
 	* testsuite/Makefile.am: Setup Boost.Test environment.
