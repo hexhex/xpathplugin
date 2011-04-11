@@ -14,6 +14,7 @@ EXTRA_DIST = \
     examples/keywords.hex \
     examples/nobelprice.hex \
     examples/scientists.hex \
+    examples/scientists_err.xml \
     examples/scientists.xml
 
 MOSTLYCLEANFILES = $(DX_CLEANFILES)
