@@ -17,13 +17,13 @@ namespace dlvhex {
 XPathAtom::XPathAtom()
 {
 	//Plugin "Parameter"-Definitions:
-       	addInputConstant();    //URI (or path to a file)
-       	addInputConstant();    //XPath query
+    addInputConstant();    //URI (or path to a file)
+    addInputConstant();    //XPath query
 	setOutputArity(1);
        	    
 	//to avoid region-specific charakter problems
-       	setlocale(LC_ALL,NULL);
-       	setlocale(LC_NUMERIC,"C");
+    setlocale(LC_ALL,NULL);
+    setlocale(LC_NUMERIC,"C");
 
 	//initialise libxml
 	xmlInitParser();
@@ -40,9 +40,10 @@ XPathAtom::retrieve(const Query& query, Answer& answer) throw (PluginError)
 {
 	std::vector<Tuple> out;
 
-    	parseXMLFile(	query.getInputTuple()[0].getUnquotedString().c_str(),
-			query.getInputTuple()[1].getUnquotedString().c_str(), 
-			out); 
+    parseXMLFile(query.getInputTuple()[0].getUnquotedString().c_str(),
+			     query.getInputTuple()[1].getUnquotedString().c_str(), 
+			     out); 
+	
 	answer.addTuples(out);
 }
 
@@ -53,30 +54,26 @@ XPathAtom::parseXMLFile(const std::string &uri, const std::string &query, std::v
 	xmlXPathContextPtr xpathCtx;
 	xmlXPathObjectPtr xpathObj;
 
-//	std::cout << "URI:\"" << uri << "\"" << std::endl;
-//	std::cout << "Query:\"" << query << "\"" << std::endl;
-
 	// Load the XML document
-    	doc = xmlParseFile(uri.c_str());
+    doc = xmlParseFile(uri.c_str());
 	if (doc == NULL) 
 		throw PluginError(std::string("Unable to parse XML-file \"")+uri+"\"");
 
 	// Create the xpath evaluation context
 	xpathCtx = xmlXPathNewContext(doc);
 	if(xpathCtx == NULL) {
-	        xmlFreeDoc(doc); 
+        xmlFreeDoc(doc); 
 		throw PluginError(std::string("Unable to create new XPath context"));
 	}
 
 	// Evaluate the xpath expression
 	// BAD_CAST use when known its safe (This is a basic byte in an UTF-8 encoded string)
 	xpathObj = xmlXPathEvalExpression(BAD_CAST(query.c_str()), xpathCtx);
-    	if(xpathObj == NULL) {
-	        xmlXPathFreeContext(xpathCtx); 
-	        xmlFreeDoc(doc); 
-		throw PluginError(std::string("Unable to evaluate XPath expression \"")+
-						query+"\"");
-    	}
+    if(xpathObj == NULL) {
+        xmlXPathFreeContext(xpathCtx); 
+        xmlFreeDoc(doc); 
+		throw PluginError(std::string("Unable to evaluate XPath expression \"")+query+"\"");
+    }
 
 	//Evaluate and convert the results
 	evaluateXPathObject(xpathObj,out);	
@@ -84,7 +81,7 @@ XPathAtom::parseXMLFile(const std::string &uri, const std::string &query, std::v
 	//Free everything
 	xmlXPathFreeObject(xpathObj);
 	xmlXPathFreeContext(xpathCtx);
-        xmlFreeDoc(doc); 
+    xmlFreeDoc(doc); 
 }
 
 void 
@@ -94,6 +91,7 @@ XPathAtom::evaluateXPathObject(const xmlXPathObjectPtr xpathObj, std::vector<Tup
 	xmlNodePtr cur;
 
 	nodes = xpathObj->nodesetval;
+    if(!nodes) return; // No results
     
 	bool atomicOnly = true;
 	for(int i = 0; i < nodes->nodeNr; ++i) {
