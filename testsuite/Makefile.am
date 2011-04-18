@@ -3,7 +3,7 @@ EXTRA_DIST = \
     tests/keywords.out \
     tests/nobelprice.out \
     tests/scientists.out \
-    tests/run-dlvhex-tests.sh \ 
+    tests/run-dlvhex-tests.sh \
     answerset_compare.py
 
 # global preprocessor flags
