@@ -2,13 +2,13 @@
 # create libtool libraries for the plugin and for local tests
 #
 plugin_LTLIBRARIES = libdlvhexxpath.la
-noinst_LTLIBRARIES = libdlvhexxpath-test.la
+noinst_LTLIBRARIES = libxpath-test.la
 
 #
 # add all sources of xpath plugin and test library
 #
 libdlvhexxpath_la_SOURCES = xpathplugin.cpp xpathatom.cpp
-libdlvhexxpath_test_la_SOURCES = xpathplugin.cpp xpathatom.cpp
+libxpath_test_la_SOURCES = xpathplugin.cpp xpathatom.cpp
 
 #
 # extend compiler flags by CFLAGS of other needed libraries
@@ -25,6 +25,6 @@ AM_CPPFLAGS = \
 libdlvhexxpath_la_LDFLAGS = -avoid-version -module \
 			$(LIBXML2_LIBS) 
 
-libdlvhexxpath_test_la_LDFLAGS = $(LIBXML2_LIBS) 
+libxpath_test_la_LDFLAGS = $(LIBXML2_LIBS) 
 
 

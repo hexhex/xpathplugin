@@ -1,8 +1,39 @@
 #!/bin/bash
 
 #
+# brief documentation of this script
+#
+# relevant environment variables:
+# TOP_BUILDDIR (as in automake)
+# TOP_SRCDIR (as in automake)
+#
+# derived values: 
+# TESTDIR="$TOP_SRCDIR/examples/tests"
+#
+# this script looks for files called "*.test" in $TESTDIR
+# each line in such a file is parsed:
+# * first word is location of input hex file (relative to $TESTDIR)
+# * second word is the filename of an existing file (relative to $TESTDIR)
+#   * if the extension is ".out" this is a positive testcase
+#     the file contains lines of answer sets
+#     successful termination of dlvhex is expected
+#   * if the extension is ".stderr" this is a special error testcase
+#     the file contains one line:
+#     * the first word is an integer (verifying the return value of dlvhex)
+#     * the remaining line is a command executed with the error output
+#       if this execution succeeds (= returns 0) the test is successful
+#       e.g.: [grep -q "rule.* is not strongly safe"] (without square brackets)
+#   * if the extension is ".stdout" this is a special output testcase
+#     (procedure as with ".stderr" only that standard output is verified
+# * the rest of the input line are parameters used for executing dlvhex
+#   e.g.: [--nofact -ra] (without square brackets)
+#
+
+#
 # dlvhex -- Answer-Set Programming with external interfaces.
 # Copyright (C) 2005, 2006, 2007 Roman Schindlauer
+# Copyright (C) 2006, 2007, 2008, 2009, 2010 Thomas Krennwallner
+# Copyright (C) 2009, 2010 Peter Schüller
 # 
 # This file is part of dlvhex.
 #
@@ -24,6 +55,7 @@
 
 MKTEMP="mktemp -t tmp.XXXXXXXXXX"
 TMPFILE=$($MKTEMP) # global temp. file for answer sets
+ETMPFILE=$($MKTEMP) # global temp. file for errors
 
 failed=0
 warned=0
@@ -31,89 +63,112 @@ ntests=0
 
 echo ============ dlvhex tests start ============
 
-# change into the example directory
-cd $EXAMPLESDIR
+DLVHEX="dlvhex -s --plugindir=${TOPSRCDIR}/src/.libs"
+TESTDIR="${TOPSRCDIR}/testsuite/tests"
+EXAMPLEDIR="${TOPSRCDIR}/examples/"
 
-for t in $(find $TESTDIR -name '*.test' -type f)
+cd $EXAMPLEDIR
+
+for t in $(find ${TESTDIR} -name '*.test' -type f)
 do
-    while read HEXPROGRAM ANSWERSETS ADDPARM
-    do
-	let ntests++
+  # "read" assigns first word to first variable,
+  # second word to second variable,
+  # and all remaining words to the last variable
+  while read HEXPROGRAM VERIFICATIONFILE ADDPARM
+  do
+    let ntests++
 
-	HEXPROGRAM=$HEXPROGRAM
-    ANSWERSETS=$TESTDIR/$ANSWERSETS
+    # check if we have the input file
+    HEXPROGRAM=$EXAMPLEDIR/$HEXPROGRAM
+    if [ ! -f $HEXPROGRAM ]; then
+        echo FAIL: Could not find program file $HEXPROGRAM
+        let failed++
+        continue
+    fi
+    
+    VERIFICATIONEXT=${VERIFICATIONFILE: -7}
+    #echo "verificationext = ${VERIFICATIONEXT}"
+    if test "x$VERIFICATIONEXT" == "x.stderr" -o "x$VERIFICATIONEXT" == "x.stdout"; then
+      #echo "negative testcase"
 
-	if [ ! -f $HEXPROGRAM ] || [ ! -f $ANSWERSETS ]; then
-	    test ! -f $HEXPROGRAM && echo WARN: Could not find program file $HEXPROGRAM
-	    test ! -f $ANSWERSETS && echo WARN: Could not find answer sets file $ANSWERSETS
-	    continue
-	fi
-     
-	# run dlvhex with specified parameters and program
-	$DLVHEX  $PARAMETERS $ADDPARM $HEXPROGRAM | egrep -v "^$" > $TMPFILE
+      ERRORFILE=$TESTDIR/$VERIFICATIONFILE
+      if [ ! -f $ERRORFILE ]; then
+          echo "FAIL: $HEXPROGRAM: could not find verification file $ERRORFILE"
+          let failed++
+          continue
+      fi
 
-	if cmp -s $TMPFILE $ANSWERSETS
-	then
-	    echo PASS: $HEXPROGRAM
-	else
+      # run dlvhex with specified parameters and program
+      $DLVHEX $ADDPARM $HEXPROGRAM 2>$ETMPFILE >$TMPFILE
+      RETVAL=$?
+      #set -x
+      #set -v
+      # check error code and output
+      read VRETVAL VCOMMAND <$ERRORFILE
+      #echo "verifying return value '$RETVAL'"
+      if [ $VRETVAL -eq $RETVAL ]; then
+        #echo "verifying with command '$VCOMMAND'"
+        # select output to check
+        if test "x$VERIFICATIONEXT" == "x.stderr"; then
+          VTMPFILE=$ETMPFILE
+        else
+          VTMPFILE=$TMPFILE
+        fi
+        # check output
+        if bash -c "cat $VTMPFILE |$VCOMMAND"; then
+          echo "PASS: $HEXPROGRAM $ADDPARM (special testcase)"
+        else
+          echo "FAIL: $DLVHEX $ADDPARM $HEXPROGRAM (output not verified by $VCOMMAND)"
+          cat $VTMPFILE
+          let failed++
+        fi
+      else
+        echo "FAIL: $DLVHEX $ADDPARM $HEXPROGRAM (return value $RETVAL not equal reference value $VRETVAL)"
+        cat $ETMPFILE
+        let failed++
+      fi
+      #set +x
+      #set +v
+    else
+      VERIFICATIONEXT=${VERIFICATIONFILE: -4}
+      if test "x$VERIFICATIONEXT" == "x.out"; then
+        #echo "model-verifying testcase"
 
-	    # and now check which answersets differ
+        ANSWERSETSFILE=$TESTDIR/$VERIFICATIONFILE
+        if [ ! -f $ANSWERSETSFILE ]; then
+            echo "FAIL: $HEXPROGRAM: could not find answer set file $ANSWERSETSFILE"
+            let failed++
+            continue
+        fi
 
-	    pasted=$($MKTEMP)
-	    paste $ANSWERSETS $TMPFILE > $pasted
+        # run dlvhex with specified parameters and program
+        $DLVHEX $ADDPARM $HEXPROGRAM 2>$ETMPFILE >$TMPFILE
+        RETVAL=$?
+        if [ $RETVAL -eq 0 ]; then
+          if $TOPSRCDIR/testsuite/tests/answerset_compare.py $TMPFILE $ANSWERSETSFILE; then
+              echo "PASS: $HEXPROGRAM $ADDPARM"
+          else
+              echo "FAIL: $DLVHEX $ADDPARM $HEXPROGRAM (answersets differ)"
+              let failed++
+          fi
+        else
+          echo "FAIL: $DLVHEX $ADDPARM $HEXPROGRAM (abnormal termination)"
+          let failed++
+          grep -v "^$" $ETMPFILE
+        fi
+      else
+        echo "FAIL: $DLVHEX $ADDPARM $HEXPROGRAM: type of testcase must be '.out', '.stdout', or '.stderr', got '$VERIFCATIONEXT'"
+        let failed++
+        continue
+      fi
+    fi
 
-	    OLDIFS=$IFS
-	    IFS=" " # we need the tabs for cut
-
-	    nas=1 # counter for answer sets
-
- 	    while read
-	    do
-			# translate both answersets to python lists
-			a1=$(echo $REPLY | cut -f1 | sed s/"'"/"\\\'"/g | sed s/"{"/"['"/ | sed s/", "/"', '"/g | sed s/"}"/"']"/)
-			a2=$(echo $REPLY | cut -f2 | sed s/"'"/"\\\'"/g | sed s/"{"/"['"/ | sed s/", "/"', '"/g | sed s/"}"/"']"/)
-
-			# check if this is a weak answerset info
-			if [ $(echo "$a1" | awk '{ print match($0, "Cost ") }') = 1 ] && [ $(echo "$a2"  | awk '{ print match($0, "Cost ") }') = 1 ] ; then
-			    let nas--
-			    if [ "$a1" != "$a2" ] ; then
-				echo "FAIL: Answer set costs differ: $a1 vs. $a2"
-				let failed++
-			    fi
-			elif cat <<EOF | python
-# -*- coding: utf-8 -*-
-# now check if set difference yields incomparability
-import sys
-a1 = $a1
-a2 = $a2
-z1 = zip(a1,a2)
-z2 = zip(z1, range(len(z1)))
-z3 = [ e for e in z2 if e[0][0] != e[0][1] ]
-for e in z3: print 'In Answerset ' + str($nas) + ' (fact ' + str(e[1]) + '): ' + e[0][0] + ' vs. ' + e[0][1]
-s1 = set(a1)
-s2 = set(a2)
-sys.exit(len(s1.symmetric_difference(s2)))
-EOF
-			then
-				echo "WARN: $DLVHEX $PARAMETERS $ADDPARM $HEXPROGRAM (answerset $nas has different ordering)"
-				let warned++
-			else
-				echo "FAIL: $DLVHEX $PARAMETERS $ADDPARM $HEXPROGRAM (answerset $nas differs)"
-        			let failed++
-			fi
-
-			let nas++
-	    done < $pasted # redirected pasted file to the while loop
-
-	    IFS=$OLDIFS
-
-	    rm -f $pasted
-	fi
-    done < $t # redirect test file to the while loop
+  done < $t # redirect test file to the while loop
 done
 
 # cleanup
 rm -f $TMPFILE
+rm -f $ETMPFILE
 
 echo ========== dlvhex tests completed ==========
 

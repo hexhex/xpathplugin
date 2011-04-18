@@ -1,3 +1,8 @@
+2011-04-19  Juergen Weinberger  <gamsta@gmx.net>
+	* converted run-dlvhex-test.sh to refactored version 
+	* added answerset_compare.py
+	* renamed static lib for unittests, conflicted with name convention
+
 2011-04-10  Juergen Weinberger  <gamsta@gmx.net>
 	* added boost unittests
 
