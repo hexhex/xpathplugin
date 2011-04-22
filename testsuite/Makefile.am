@@ -4,7 +4,7 @@ EXTRA_DIST = \
     tests/nobelprice.out \
     tests/scientists.out \
     tests/run-dlvhex-tests.sh \
-    answerset_compare.py
+    tests/answerset_compare.py
 
 # global preprocessor flags
 AM_CPPFLAGS = \

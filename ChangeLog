@@ -1,4 +1,6 @@
-2011-04-22  Thomas Krennwallner  <tkren@local>
+2011-04-22  Thomas Krennwallner  <tkren@kr.tuwien.ac.at>
+
+	* testsuite/Makefile.am (EXTRA_DIST): Fix answerset_compare.py.
 
 	* testsuite/Makefile.am (LIBS): Link unit tests with LIBCURL.
 	* configure.ac: Likewise.
