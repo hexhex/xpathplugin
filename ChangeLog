@@ -1,12 +1,20 @@
+2011-04-22  Thomas Krennwallner  <tkren@local>
+
+	* testsuite/Makefile.am (LIBS): Link unit tests with LIBCURL.
+	* configure.ac: Likewise.
+
 2011-04-19  Juergen Weinberger  <gamsta@gmx.net>
-	* converted run-dlvhex-test.sh to refactored version 
-	* added answerset_compare.py
-	* renamed static lib for unittests, conflicted with name convention
+
+	* converted run-dlvhex-test.sh to refactored version.
+	* added answerset_compare.py.
+	* renamed static lib for unittests, conflicted with name convention.
 
 2011-04-10  Juergen Weinberger  <gamsta@gmx.net>
+
 	* added boost unittests
 
 2011-04-09  Juergen Weinberger  <gamsta@gmx.net>
+
 	* examples/tests moved to testsuite/tests
 	* run-dlvhex-tests.sh updated for new test dir
 	* testsuite/Makefile.am updated for new test dir
@@ -34,6 +42,7 @@
 	* src/Makefile.am: Add LIBXML2_CFLAGS and LIBXML2_LIBS.
 
 2010-09-09  Juergen Weinberger  <gamsta@gmx.net>
+
 	* MyErrorhandler.cpp/.hpp: Removed no longer needed
 	* include/xpathatom.hpp: Removed xerces and xalan; added xmllib; refactored
 	* src/xpathatom.cpp: Removed xerces and xalan; added xmllib; refactored
@@ -45,6 +54,7 @@
 	* configure.ac: updated
 
 2010-09-02  Juergen Weinberger  <gamsta@gmx.net>
+
 	* include/: Seperated the classes into cpp and header files
 	* include/Makefile.am: Added
 	* include/xpathatom.hpp: Seperated the xpathatom in it's own file
@@ -81,4 +91,3 @@
 	* testsuite/Makefile.am: Likewise.
 
 	* Makefile.am (AUTOMAKE_OPTIONS): Use gnu option.
-

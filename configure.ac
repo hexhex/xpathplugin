@@ -39,6 +39,11 @@ AC_PROG_LIBTOOL
 #
 
 #
+# check for libcurl
+#
+LIBCURL_CHECK_CONFIG([], [], [], [AC_MSG_ERROR([could not find CURL library. Download it at http://curl.haxx.se/.])])
+
+#
 # of course we need dlvhex itself!
 #
 PKG_CHECK_MODULES([DLVHEX], [dlvhex >= 1.7])
