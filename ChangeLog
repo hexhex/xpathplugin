@@ -1,3 +1,7 @@
+2011-05-30  Peter Schueller  <ps@kr.tuwien.ac.at>
+
+	* testsuite/Makefile.am: Added missing flags.
+
 2011-04-22  Thomas Krennwallner  <tkren@kr.tuwien.ac.at>
 
 	* testsuite/Makefile.am (EXTRA_DIST): Fix answerset_compare.py.
