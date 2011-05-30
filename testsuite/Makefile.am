@@ -10,6 +10,7 @@ EXTRA_DIST = \
 AM_CPPFLAGS = \
     -I$(top_srcdir)/include \
     $(BOOST_CPPFLAGS) \
+	  $(DLVHEX_CFLAGS) \
     $(LIBXML2_CFLAGS) \
     @LIBCURL_CPPFLAGS@
 
