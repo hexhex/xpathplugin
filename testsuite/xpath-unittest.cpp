@@ -14,7 +14,7 @@ using namespace dlvhex::xpath;
 // Test loading of a not existing xml file
 BOOST_AUTO_TEST_CASE( XPathAtomTest_LoadNoneExistingXML )
 {
-  const char* ex = getenv("TOPSRCDIR");
+  const char* ex = getenv("TOP_SRCDIR");
   assert (ex != 0);
   
   std::string xmlfile(ex);
@@ -32,7 +32,7 @@ BOOST_AUTO_TEST_CASE( XPathAtomTest_LoadNoneExistingXML )
 // Test loading and evaluating an invalid xml file
 BOOST_AUTO_TEST_CASE( XPathAtomTest_LoadInvalidXML )
 {
-  const char* ex = getenv("TOPSRCDIR");
+  const char* ex = getenv("TOP_SRCDIR");
   assert (ex != 0);
   
   std::string xmlfile(ex);
@@ -50,7 +50,7 @@ BOOST_AUTO_TEST_CASE( XPathAtomTest_LoadInvalidXML )
 // Test evaluating an invalid query
 BOOST_AUTO_TEST_CASE( XPathAtomTest_EvaluateInvalidQuery )
 {
-  const char* ex = getenv("TOPSRCDIR");
+  const char* ex = getenv("TOP_SRCDIR");
   assert (ex != 0);
   
   std::string xmlfile(ex);
@@ -68,7 +68,7 @@ BOOST_AUTO_TEST_CASE( XPathAtomTest_EvaluateInvalidQuery )
 // Test evaluating an empty query
 BOOST_AUTO_TEST_CASE( XPathAtomTest_EmptyQuery )
 {
-  const char* ex = getenv("TOPSRCDIR");
+  const char* ex = getenv("TOP_SRCDIR");
   assert (ex != 0);
   
   std::string xmlfile(ex);
@@ -87,7 +87,7 @@ BOOST_AUTO_TEST_CASE( XPathAtomTest_EmptyQuery )
 // Test evaluating a none atomic query
 BOOST_AUTO_TEST_CASE( XPathAtomTest_NotAtomicOnlyQuery )
 {
-  const char* ex = getenv("TOPSRCDIR");
+  const char* ex = getenv("TOP_SRCDIR");
   assert (ex != 0);
   
   std::string xmlfile(ex);
@@ -106,7 +106,7 @@ BOOST_AUTO_TEST_CASE( XPathAtomTest_NotAtomicOnlyQuery )
 // Tests loading and evaluating of a valid xml file and query
 BOOST_AUTO_TEST_CASE( XPathAtomTest_AllValid )
 {
-  const char* ex = getenv("TOPSRCDIR");
+  const char* ex = getenv("TOP_SRCDIR");
   assert (ex != 0);
   
   std::string xmlfile(ex);
