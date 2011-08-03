@@ -1,7 +1,7 @@
 EXTRA_DIST = \
-	keywords.hex \
-	nobelprice.hex \
-	scientists.hex \
+	keywords.hex.in \
+	nobelprice.hex.in \
+	scientists.hex.in \
 	scientists_err.xml \
 	scientists.xml \
 	tests/xpath.test \

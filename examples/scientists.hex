@@ -1,4 +1,0 @@
-% sperate female and male scientists
-
-female_scientists(X) :- &xpath["scientists.xml","//scientist[@gender='female']/@name"](X).
-male(X) :- &xpath["scientists.xml","//scientist[@gender='male']/@name"](X).

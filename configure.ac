@@ -1,5 +1,5 @@
 AC_PREREQ([2.61])
-AC_INIT([dlvhex-xpathplugin],[1.7.0],[weinma@me.com])
+AC_INIT([dlvhex-xpathplugin],[1.7.0],[gamsta@gmx.net])
 AC_CONFIG_SRCDIR([src/xpathplugin.cpp])
 AC_CONFIG_HEADER([src/config.h])
 
@@ -97,11 +97,19 @@ DX_INIT_DOXYGEN([dlvhexxpathplugin], [doxygen.cfg], [documentation])
 #
 CPPFLAGS="$CPPFLAGS -DPLUGIN_DIR='\"\$(dlvhexlibdir)\"'"
 
+# substitute EXAMPLESDIR in examples
+EXAMPLESDIR=../$srcdir/examples
+AC_SUBST([EXAMPLESDIR])
+
 #
 # all needed makefiles
 #
 AC_CONFIG_FILES([
         Makefile 
+	examples/Makefile
+	examples/keywords.hex
+	examples/nobelprice.hex
+	examples/scientists.hex
         testsuite/Makefile
         include/Makefile
         src/Makefile

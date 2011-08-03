@@ -1,0 +1,4 @@
+% sperate female and male scientists
+
+female_scientists(X) :- &xpath["@EXAMPLESDIR@/scientists.xml","//scientist[@gender='female']/@name"](X).
+male(X) :- &xpath["@EXAMPLESDIR@/scientists.xml","//scientist[@gender='male']/@name"](X).

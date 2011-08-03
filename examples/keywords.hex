@@ -1,3 +1,0 @@
-% select all keywords from scientists.xml
-
-keyword(X) :- &xpath["scientists.xml","//keyword/child::node()"](X).

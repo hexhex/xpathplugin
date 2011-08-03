@@ -1,0 +1,3 @@
+% select the Names of all scientists, where "Nobel Price" is a keyword
+
+nobel_price_winner(X) :- &xpath["@EXAMPLESDIR@/scientists.xml","//scientist[./keywords/keyword='Nobel Price']/@name"](X).
