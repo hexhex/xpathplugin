@@ -20,7 +20,14 @@ TESTS = \
 	xpath-unittest \
 	run-dlvhex-tests.sh
 
-TESTS_ENVIRONMENT = TOPSRCDIR=$(top_srcdir) TOPBUILDDIR=$(top_builddir) BOOST_TEST_LOG_LEVEL=all BOOST_TEST_SHOW_PROGRESS=yes
+TESTS_ENVIRONMENT = \
+  TOP_SRCDIR=$(top_srcdir) \
+  EXAMPLESDIR=$(top_builddir)/examples \
+  TESTDIR=$(top_srcdir)/examples/tests \
+  DLVHEX="dlvhex -s --plugindir=$(top_builddir)/src/.libs" \
+  BOOST_TEST_SHOW_PROGRESS=yes \
+  BOOST_TEST_REPORT_LEVEL=detailed \
+  BOOST_TEST_LOG_LEVEL=all
 
 check_PROGRAMS = xpath-unittest
 

@@ -1,6 +1,14 @@
 2011-08-03  Thomas Krennwallner  <tkren@kr.tuwien.ac.at>
 
+	* testsuite/xpath-unittest.cpp: Fix TOP_SRCDIR.
+
+	* configure.ac: Autogenerate HEX-files.
+	* examples/nobelprice.hex.in: Likewise.
+	* examples/scientists.hex.in: Likewise.
+	* examples/keywords.hex.in: Likewise.
+
 	* testsuite/Makefile.am (EXTRA_DIST): Use dlvhex-common for run-dlvhex-tests.sh.
+	(TESTS_ENVIRONMENT): Add EXAMPLESDIR, TESTDIR, and DLVHEX.
 	* examples/Makefile.am: Likewise.
 	* Makefile.am: Likewise.
 
