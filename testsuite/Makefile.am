@@ -1,10 +1,6 @@
 EXTRA_DIST = \
-    tests/xpath.test \
-    tests/keywords.out \
-    tests/nobelprice.out \
-    tests/scientists.out \
-    tests/run-dlvhex-tests.sh \
-    tests/answerset_compare.py
+	answerset_compare.py \
+	run-dlvhex-tests.sh
 
 # global preprocessor flags
 AM_CPPFLAGS = \
@@ -20,8 +16,9 @@ AM_LDFLAGS = $(BOOST_UNIT_TEST_FRAMEWORK_LDFLAGS)
 # global libs
 LIBS = $(BOOST_UNIT_TEST_FRAMEWORK_LIBS) $(LIBXML2_LIBS) @LIBCURL@ $(DLVHEX_LIBS)
 
-TESTS = xpath-unittest \
-        tests/run-dlvhex-tests.sh
+TESTS = \
+	xpath-unittest \
+	run-dlvhex-tests.sh
 
 TESTS_ENVIRONMENT = TOPSRCDIR=$(top_srcdir) TOPBUILDDIR=$(top_builddir) BOOST_TEST_LOG_LEVEL=all BOOST_TEST_SHOW_PROGRESS=yes
 

@@ -1,3 +1,9 @@
+2011-08-03  Thomas Krennwallner  <tkren@kr.tuwien.ac.at>
+
+	* testsuite/Makefile.am (EXTRA_DIST): Use dlvhex-common for run-dlvhex-tests.sh.
+	* examples/Makefile.am: Likewise.
+	* Makefile.am: Likewise.
+
 2011-05-30  Peter Schueller  <ps@kr.tuwien.ac.at>
 
 	* testsuite/Makefile.am: Added missing flags.

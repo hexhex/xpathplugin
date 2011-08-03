@@ -4,17 +4,13 @@ ACLOCAL_AMFLAGS = -I m4
 include doxygen.am
 
 SUBDIRS = \
+	examples \
 	src \
 	testsuite \
 	include 
 
 EXTRA_DIST = \
 	doxygen.am \
-	doxygen.cfg \
-    examples/keywords.hex \
-    examples/nobelprice.hex \
-    examples/scientists.hex \
-    examples/scientists_err.xml \
-    examples/scientists.xml
+	doxygen.cfg
 
 MOSTLYCLEANFILES = $(DX_CLEANFILES)
