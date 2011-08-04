@@ -1,3 +1,20 @@
+2011-08-04  Thomas Krennwallner  <tkren@kr.tuwien.ac.at>
+
+	* doxygen.am: Use dlvhex-common.
+	* doxygen.cfg: Likewise.
+	* m4/boost.m4: Likewise.
+	* m4/doxygen.m4: Likewise.
+
+	* include/xpathatom.hpp: Add copyright info.
+	* include/xpathplugin.hpp: Likewise.
+	* src/xpathatom.cpp: Likewise.
+	* src/xpathplugin.cpp: Likewise.
+	* testsuite/xpath-unittest.cpp: Likewise.
+
+	* NEWS: Describe changes.
+
+	* AUTHORS: Fix email.
+
 2011-08-03  Thomas Krennwallner  <tkren@kr.tuwien.ac.at>
 
 	* testsuite/xpath-unittest.cpp: Fix TOP_SRCDIR.
