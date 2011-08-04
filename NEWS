@@ -1,5 +1,13 @@
 dlvhex-xpathplugin NEWS -- history of user-visible changes.
 
-Version 1.7.0
+* Version 1.7.0 (2011)
 
-* Rewrite plugin for libxml2.
+** Rewrite plugin for libxml2.
+
+** Code cleanup.
+
+
+Local variables:
+mode: outline
+paragraph-separate: "[ 	]*$"
+end:
